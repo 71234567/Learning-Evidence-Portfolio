@@ -85,6 +85,28 @@ figcaption{font-size:14px;color:#666;margin-top:12px}
 .steps li+li{margin-top:10px}
 .steps li::marker{color:#8f7233;font-weight:600}
 
+/* EVIDENCE VIEWER */
+.evidence-gallery{min-width:0}
+.evidence-stack{display:grid;gap:16px;min-width:0}
+.evidence-document{position:relative;width:100%;height:375px;background:#f7f5f0;border:1px solid #e9e3d6;border-radius:14px;overflow:hidden}
+.evidence-document iframe{display:block;width:100%;height:100%;border:0;pointer-events:none;aspect-ratio:auto;object-fit:contain;border-radius:0;background:#fff}
+.evidence-hit{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:transparent;cursor:zoom-in}
+.evidence-hit:focus-visible,.evidence-image:focus-visible{outline:3px solid #c8a96a;outline-offset:3px}
+.evidence-image{appearance:none;width:100%;display:block;border:0;background:transparent;padding:0;line-height:0;cursor:zoom-in;min-width:0}
+.media .evidence-image img{width:100%;height:auto;max-height:440px;aspect-ratio:auto;object-fit:contain;border-radius:14px}
+.evidence-photo-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-items:center}
+.media .evidence-photo-row img{max-height:235px}
+.no-evidence{display:block}
+.no-evidence .reflection{width:100%;max-width:none}
+.evidence-viewer[hidden]{display:none}
+.evidence-viewer{position:fixed;inset:0;z-index:4000;background:rgba(10,16,24,.91);display:flex;align-items:center;justify-content:center;padding:46px 20px 20px}
+.evidence-viewer-content{width:min(1100px,100%);height:min(880px,calc(100vh - 85px));display:flex;align-items:center;justify-content:center}
+.evidence-viewer-content iframe{width:100%;height:100%;background:#fff;border:0;border-radius:8px}
+.evidence-viewer-content img{display:block;width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain}
+.evidence-viewer-close{position:absolute;right:18px;top:10px;width:42px;height:42px;background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.45);border-radius:50%;font:26px/1 Inter,sans-serif;cursor:pointer}
+body.evidence-viewer-open{overflow:hidden}
+@media(max-width:640px){.evidence-document{height:320px}.media .evidence-photo-row img{max-height:180px}.evidence-viewer{padding:58px 8px 12px}}
+
 /* FOOTER */
 footer{padding:60px 40px;background:#f7f5f0;color:#666;text-align:center;margin-top:80px}
 footer strong{color:#222}
@@ -163,9 +185,13 @@ footer strong{color:#222}
         </ul>
       </div>
       <div class="cols">
-        <figure class="media">
-          <div class="slot"><strong>Media evidence</strong><span>Replace this box with a picture, video, screenshot or document.</span></div>
-          <figcaption>[Describe your evidence]</figcaption>
+        <figure class="media evidence-gallery">
+          <div class="evidence-stack">
+            <div class="evidence-document">
+              <iframe src="docs/True cost (1)(1).pdf#toolbar=0&amp;navpanes=0&amp;view=FitH" title="True Cost complete presentation, six slides" loading="lazy" tabindex="-1"></iframe>
+              <button type="button" class="evidence-hit" data-viewer-src="docs/True cost (1)(1).pdf" data-viewer-kind="pdf" aria-label="Enlarge document: True Cost complete presentation, six slides"></button>
+            </div>
+          </div>
         </figure>
         <div class="reflection">
           <h4>Personal reflection <span>100–200 words (139 words)</span></h4>
@@ -188,9 +214,12 @@ footer strong{color:#222}
         </ul>
       </div>
       <div class="cols">
-        <figure class="media">
-          <div class="slot"><strong>Media evidence</strong><span>Replace this box with a picture, video, screenshot or document.</span></div>
-          <figcaption>[Describe your evidence]</figcaption>
+        <figure class="media evidence-gallery">
+          <div class="evidence-stack">
+            <button class="evidence-image" type="button" data-viewer-src="images/Merged iceberg (2) (1)(1).png" data-viewer-kind="image" aria-label="Enlarge image: Merged Iceberg, A Road to Sustainability">
+              <img src="images/Merged iceberg (2) (1)(1).png" alt="Merged Iceberg, A Road to Sustainability" loading="lazy">
+            </button>
+          </div>
         </figure>
         <div class="reflection">
           <h4>Personal reflection <span>100–200 words (153 words)</span></h4>
@@ -213,9 +242,21 @@ footer strong{color:#222}
         </ul>
       </div>
       <div class="cols">
-        <figure class="media">
-          <div class="slot"><strong>Media evidence</strong><span>Replace this box with a picture, video, screenshot or document.</span></div>
-          <figcaption>[Describe your evidence]</figcaption>
+        <figure class="media evidence-gallery">
+          <div class="evidence-stack">
+            <div class="evidence-photo-row">
+              <button class="evidence-image" type="button" data-viewer-src="images/WhatsApp Image 2026-11-24 at 1.46.26 AM.jpeg" data-viewer-kind="image" aria-label="Enlarge image: MUNGDL 2026 photograph one">
+                <img src="images/WhatsApp Image 2026-11-24 at 1.46.26 AM.jpeg" alt="MUNGDL 2026 photograph one" loading="lazy">
+              </button>
+              <button class="evidence-image" type="button" data-viewer-src="images/WhatsApp Image 2026-11-24 at 1.46.26 AM (1).jpeg" data-viewer-kind="image" aria-label="Enlarge image: MUNGDL 2026 photograph two">
+                <img src="images/WhatsApp Image 2026-11-24 at 1.46.26 AM (1).jpeg" alt="MUNGDL 2026 photograph two" loading="lazy">
+              </button>
+            </div>
+            <div class="evidence-document">
+              <iframe src="docs/Position Paper Christopher (1)(1).pdf#toolbar=0&amp;navpanes=0&amp;view=FitH" title="Brazil G20 Position Paper, ten pages" loading="lazy" tabindex="-1"></iframe>
+              <button type="button" class="evidence-hit" data-viewer-src="docs/Position Paper Christopher (1)(1).pdf" data-viewer-kind="pdf" aria-label="Enlarge document: Brazil G20 Position Paper, ten pages"></button>
+            </div>
+          </div>
         </figure>
         <div class="reflection">
           <h4>Personal reflection <span>100–200 words (181 words)</span></h4>
@@ -248,9 +289,13 @@ footer strong{color:#222}
         </ul>
       </div>
       <div class="cols">
-        <figure class="media">
-          <div class="slot"><strong>Media evidence</strong><span>Replace this box with a picture, video, screenshot or document.</span></div>
-          <figcaption>[Describe your evidence]</figcaption>
+        <figure class="media evidence-gallery">
+          <div class="evidence-stack">
+            <div class="evidence-document">
+              <iframe src="docs/Strategic Activity 8. The Inequality Laboratory (1) (1)(1).pdf#toolbar=0&amp;navpanes=0&amp;view=FitH" title="Strategic Activity 8 Inequality Laboratory, four pages" loading="lazy" tabindex="-1"></iframe>
+              <button type="button" class="evidence-hit" data-viewer-src="docs/Strategic Activity 8. The Inequality Laboratory (1) (1)(1).pdf" data-viewer-kind="pdf" aria-label="Enlarge document: Strategic Activity 8 Inequality Laboratory, four pages"></button>
+            </div>
+          </div>
         </figure>
         <div class="reflection">
           <h4>Personal reflection <span>100–200 words (127 words)</span></h4>
@@ -268,9 +313,12 @@ footer strong{color:#222}
         <p>Based on what you learned in class, design one concrete, realistic action (policy, intervention, activity, campaign) you could take to promote well-being and fairness.</p>
       </div>
       <div class="cols">
-        <figure class="media">
-          <div class="slot"><strong>Media evidence of the proposal</strong><span>Replace this box with a poster, slide, mock-up, video or document.</span></div>
-          <figcaption>[Describe your proposal]</figcaption>
+        <figure class="media evidence-gallery">
+          <div class="evidence-stack">
+            <button class="evidence-image" type="button" data-viewer-src="images/Smartphone con ícono de agua y comunidad(1).png" data-viewer-kind="image" aria-label="Enlarge image: H2O Connect application icon displayed on a phone">
+              <img src="images/Smartphone con ícono de agua y comunidad(1).png" alt="H2O Connect application icon displayed on a phone" loading="lazy">
+            </button>
+          </div>
         </figure>
         <div class="reflection">
           <h4>Proposal <span>100–200 words (151 words)</span></h4>
@@ -290,22 +338,12 @@ footer strong{color:#222}
       <div class="steps">
         <h4>My first three steps</h4>
         <ol>
-          <li><strong>[Step 1]</strong> Develop the app
-            <p>Possible obstacle and how I would respond: Hard parts to program, so I could reach for help.</p>
-          </li>
-          <li><strong>[Step 2]</strong> Test the app
-            <p>Possible obstacle and how I would respond: Don’t know if it would work in real situations, so I would ask for feedback from friends or family.</p>
-          </li>
-          <li><strong>[Step 3]</strong> Improve and share the app
-            <p>Possible obstacle and how I would respond: The app won’t be super popular, so I would promote it online</p>
-          </li>
+          <li><strong>[Step 1]</strong> Develop the app<p>Possible obstacle and how I would respond: Hard parts to program, so I could reach for help.</p></li>
+          <li><strong>[Step 2]</strong> Test the app<p>Possible obstacle and how I would respond: Don’t know if it would work in real situations, so I would ask for feedback from friends or family.</p></li>
+          <li><strong>[Step 3]</strong> Improve and share the app<p>Possible obstacle and how I would respond: The app won’t be super popular, so I would promote it online</p></li>
         </ol>
       </div>
-      <div class="cols">
-        <figure class="media">
-          <div class="slot"><strong>Media evidence of your plan</strong><span>Replace this box with a timeline, flowchart or planning notes.</span></div>
-          <figcaption>[Describe your plan]</figcaption>
-        </figure>
+      <div class="cols no-evidence">
         <div class="reflection">
           <h4>Personal reflection <span>100–200 words (100 words)</span></h4>
           <p>To get the app to succeed I need to develop two important skills, programming and communication. Programming to develop the app and communication to get the right people to help the initiative. This semester in Computational Thinking I’ve been learning programming and it will help a lot, but what I think that matters the most is that in Global Issues I learned why many things happen and why people act the way they do, so that helps me understand in much better ways some situations and find solutions that can help everyone, because the base of communication is the understanding.</p>
@@ -334,6 +372,12 @@ footer strong{color:#222}
 
 </main>
 
+<!-- Enlarged document/photo view -->
+<div class="evidence-viewer" id="evidence-viewer" role="dialog" aria-label="Expanded evidence" aria-modal="true" hidden>
+  <button class="evidence-viewer-close" type="button" aria-label="Close enlarged view">&times;</button>
+  <div class="evidence-viewer-content"></div>
+</div>
+
 <footer>
   <div class="wrap">
     <p><strong>Learning Evidence Portfolio</strong><br>Christopher Emmanuel Martínez Ordaz – Global Issues – 2026</p>
@@ -352,6 +396,46 @@ updateHeroParallax();
 window.addEventListener('scroll',updateHeroParallax,{passive:true});
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}));
 document.querySelectorAll('main section:not(.hero)').forEach(sec=>{sec.classList.add('fade');io.observe(sec)});
+
+// Enlarge original pictures or full PDFs without changing their content.
+const evidenceViewer=document.getElementById('evidence-viewer');
+const evidenceViewerContent=evidenceViewer.querySelector('.evidence-viewer-content');
+const evidenceViewerClose=evidenceViewer.querySelector('.evidence-viewer-close');
+let evidenceLastFocus=null;
+
+function showEvidence(src,kind){
+  evidenceLastFocus=document.activeElement;
+  evidenceViewerContent.replaceChildren();
+  let el;
+  if(kind==='pdf'){
+    el=document.createElement('iframe');
+    el.src=src+'#toolbar=1&view=FitH';
+    el.title='Full document';
+  }else{
+    el=document.createElement('img');
+    el.src=src;
+    el.alt='Expanded evidence image';
+  }
+  evidenceViewerContent.append(el);
+  evidenceViewer.hidden=false;
+  document.body.classList.add('evidence-viewer-open');
+  evidenceViewerClose.focus();
+}
+
+function hideEvidence(){
+  evidenceViewer.hidden=true;
+  evidenceViewerContent.replaceChildren();
+  document.body.classList.remove('evidence-viewer-open');
+  if(evidenceLastFocus && evidenceLastFocus.isConnected)evidenceLastFocus.focus();
+}
+
+document.querySelectorAll('[data-viewer-src]').forEach(btn=>{
+  btn.addEventListener('click',()=>showEvidence(btn.dataset.viewerSrc,btn.dataset.viewerKind));
+});
+
+evidenceViewerClose.addEventListener('click',hideEvidence);
+evidenceViewer.addEventListener('click',event=>{if(event.target===evidenceViewer)hideEvidence()});
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!evidenceViewer.hidden)hideEvidence()});
 </script>
 </body>
 </html>
